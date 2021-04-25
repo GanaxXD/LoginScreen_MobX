@@ -46,7 +46,7 @@ abstract class _LoginStore with Store{
   bool get isEmailValid => EmailValidator.validate(email);
 
   //Utilizarei a biblioteca regex_validator, para facilitar. Pode até ser usada para email tbm.
-  //Verificar porque o mobX está tendo dificuldade em renderizar as alterações de estados com o hotreload
+  //Verificar porque o mobX está tendo dificuldade em renderizar as alterações de estados com o reload
   @computed
   bool get isPasswordValid => validator.password(password);
 

@@ -4,7 +4,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:login_mobx/screens/taskScreen.dart';
 import 'package:login_mobx/stores/login_store.dart';
 import 'package:login_mobx/widgets/textfield.dart';
-import 'package:mobx/mobx.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -38,9 +37,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   Padding(
                     padding: const EdgeInsets.all(12),
                     child: MyTextField(
-                        login,
                         "Login",
-                        Icon(Icons.login, color: Colors.indigo[900],),
+                        Icon(Icons.login, color: Colors.white,),
                         null,
                         TextInputType.text,
                         loginscreen.setEmail,
@@ -48,22 +46,32 @@ class _LoginScreenState extends State<LoginScreen> {
                         false
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: MyTextField(
-                        senha,
-                        "Senha",
-                        Icon(Icons.lock, color: Colors.indigo[900],),
-                        Icon(Icons.visibility, color: Colors.indigo[900],),
-                        TextInputType.text,
-                        loginscreen.setPassword,
-                        true,
-                        false
-                    ),
+                  Observer(
+                      builder: (_){
+                        return MyTextField(
+                          "Senha",
+                          Icon(Icons.lock, color: Colors.white,),
+                          Observer(
+                            builder: (_){ return
+                              IconButton(icon: Icon(!loginscreen.tooglePasswordIsValid ?
+                                               Icons.visibility : Icons.visibility_off,
+                                         color: Colors.white,),
+                                  onPressed: loginscreen.settooglePasswordChange,
+                                  splashColor: Colors.purpleAccent,
+                              );
+                            }
+                          ),
+                          TextInputType.text,
+                          loginscreen.setPassword,
+                          true,
+                          loginscreen.tooglePasswordIsValid
+                          );
+                     }
                   ),
+
                   //Para que o computed formValidator seja ativado por essa tela, eu preciso
                   //colocar o botão dentro de um widget "Observer", para que o botão seja
-                  //vgiado o tempo todo, e ativada a sua ação quando necessário.
+                  //vgiado o tempo td, e ativada a sua ação quando necessário.
                   Observer(
                      builder: (_){
                        return SizedBox(

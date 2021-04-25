@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -31,28 +33,43 @@ class _TaskScreenState extends State<TaskScreen> {
         title: Text("Tarefas", style: TextStyle(color: Colors.white),),
         brightness: Brightness.dark,
       ),
-      body: ListView.separated(
-        shrinkWrap: true,
-        reverse: false,
-        scrollDirection: Axis.vertical,
-        itemCount: 10,
-        separatorBuilder: (_, __){
-          return Divider( color: Colors.indigo[600], thickness: 1, indent: 20, endIndent: 20, height: 0.1,);
-        },
-        itemBuilder: (_, index){
-          return ListTile(
-            title: Text("Tarefa $index", style: TextStyle(
-                color: Colors.white, fontStyle: FontStyle.italic,
-                fontSize: 14,
-                textBaseline: TextBaseline.alphabetic,
-                fontWeight: FontWeight.w900,
-                height: 0.5
-              ), overflow: TextOverflow.ellipsis,),
-            onTap: (){
+      body: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+            child: MyTextField("Digite uma tarefa", null,
+                Icon(Icons.save, color: Colors.white,),
+                TextInputType.text,
+                (value){
 
+                },
+                true, false),
+          ),
+          ListView.separated(
+            shrinkWrap: true,
+            reverse: false,
+            scrollDirection: Axis.vertical,
+            itemCount: 10,
+            separatorBuilder: (_, __){
+              return Divider( color: Colors.indigo[600], thickness: 1, indent: 20, endIndent: 20, height: 0.1,);
             },
-          );
-        },
+            itemBuilder: (_, index){
+              return ListTile(
+                title: Text("Tarefa $index", style: TextStyle(
+                    color: Colors.white, fontStyle: FontStyle.italic,
+                    fontSize: 14,
+                    textBaseline: TextBaseline.alphabetic,
+                    fontWeight: FontWeight.w900,
+                    height: 0.5
+                ), overflow: TextOverflow.ellipsis,),
+                onTap: (){
+
+                },
+              );
+            },
+          )
+        ],
       )
     );
   }

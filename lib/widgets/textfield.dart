@@ -2,31 +2,29 @@ import 'package:flutter/material.dart';
 
 class MyTextField extends StatefulWidget {
 
-  final TextEditingController controller;
   final String hint;
   final Widget prefix, sufix;
   final TextInputType textInputType;
   final Function(String) onChanged;
   final bool enabled, obscure;
 
-  MyTextField(this.controller, this.hint, this.prefix, this.sufix,
+  MyTextField(this.hint, this.prefix, this.sufix,
       this.textInputType, this.onChanged, this.enabled, this.obscure);
 
   @override
-  _MyTextFieldState createState() => _MyTextFieldState(this.controller, this.hint, this.prefix, this.sufix,
+  _MyTextFieldState createState() => _MyTextFieldState(this.hint, this.prefix, this.sufix,
       this.textInputType, this.onChanged, this.enabled, this.obscure);
 }
 
 class _MyTextFieldState extends State<MyTextField> {
 
-  final TextEditingController controller;
   final String hint;
   final Widget prefix, sufix;
   final TextInputType textInputType;
   final Function(String) onChanged;
   final bool enabled, obscure;
 
-  _MyTextFieldState(this.controller, this.hint, this.prefix, this.sufix,
+  _MyTextFieldState(this.hint, this.prefix, this.sufix,
       this.textInputType, this.onChanged, this.enabled, this.obscure);
 
   @override
@@ -42,7 +40,6 @@ class _MyTextFieldState extends State<MyTextField> {
         padding: prefix != null ? null : const EdgeInsets.only(left: 16),
         child: TextField(
           expands: false,
-          controller: controller,
           obscureText: obscure,
           keyboardType: textInputType,
           onChanged: onChanged,

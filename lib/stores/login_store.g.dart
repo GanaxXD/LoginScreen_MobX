@@ -61,6 +61,23 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
+  final _$tooglePasswordIsValidAtom =
+      Atom(name: '_LoginStore.tooglePasswordIsValid');
+
+  @override
+  bool get tooglePasswordIsValid {
+    _$tooglePasswordIsValidAtom.reportRead();
+    return super.tooglePasswordIsValid;
+  }
+
+  @override
+  set tooglePasswordIsValid(bool value) {
+    _$tooglePasswordIsValidAtom.reportWrite(value, super.tooglePasswordIsValid,
+        () {
+      super.tooglePasswordIsValid = value;
+    });
+  }
+
   final _$_LoginStoreActionController = ActionController(name: '_LoginStore');
 
   @override
@@ -86,10 +103,22 @@ mixin _$LoginStore on _LoginStore, Store {
   }
 
   @override
+  void settooglePasswordChange() {
+    final _$actionInfo = _$_LoginStoreActionController.startAction(
+        name: '_LoginStore.settooglePasswordChange');
+    try {
+      return super.settooglePasswordChange();
+    } finally {
+      _$_LoginStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 email: ${email},
 password: ${password},
+tooglePasswordIsValid: ${tooglePasswordIsValid},
 isEmailValid: ${isEmailValid},
 isPasswordValid: ${isPasswordValid},
 isFormValid: ${isFormValid}

@@ -40,6 +40,12 @@ abstract class _LoginStore with Store{
   @action
   void settooglePasswordChange() => tooglePasswordIsValid = !tooglePasswordIsValid;
 
+  @observable
+  bool loggedIn = false;
+
+  @observable
+  bool loading = false;
+
   //Para validar o email, utilizarei a biblioteca Email_Validator (email_validator: '^1.0.5'), mas pode-se usar o reGex
   //Computed SEMPRE deve ser um getter
   @computed
@@ -52,5 +58,20 @@ abstract class _LoginStore with Store{
 
   @computed
   bool get isFormValid => isEmailValid && isPasswordValid;
+
+  @computed
+  Function get loginPressed =>
+      (isPasswordValid && isEmailValid && !loading) ? login : null;
+
+  @action
+  Future<void> login() async {
+    loading = true;
+
+    //processo
+    Future.delayed(Duration(seconds: 2));
+
+    loading = false;
+    loggedIn = true;
+  }
 
 }

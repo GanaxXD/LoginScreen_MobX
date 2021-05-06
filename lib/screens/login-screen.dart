@@ -13,10 +13,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
 
-  //Usando o mobx, não preciso de cotroladores
-  TextEditingController login = TextEditingController();
-  TextEditingController senha = TextEditingController();
-
   LoginStore loginscreen = LoginStore();
 
   //Para parar o ciclo de reações infinitas
@@ -83,6 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         false
                     ),
                   ),
+
                   Observer(
                       builder: (_){
                         return MyTextField(

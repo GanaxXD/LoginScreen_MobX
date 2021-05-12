@@ -1,8 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:login_mobx/screens/login-screen.dart';
 import 'package:login_mobx/widgets/textfield.dart';
 
@@ -19,7 +18,6 @@ class _TaskScreenState extends State<TaskScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          resizeToAvoidBottomInset: false,
             floatingActionButton: IconButton(
               padding: const EdgeInsets.only(top: 25, bottom: 35),
               splashRadius: 120,
@@ -36,6 +34,7 @@ class _TaskScreenState extends State<TaskScreen> {
               brightness: Brightness.dark,
             ),
             body: Column(
+              mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.all(20),
@@ -48,29 +47,36 @@ class _TaskScreenState extends State<TaskScreen> {
                       },
                       true, false),
                 ),
-                ListView.separated(
+                Expanded(child: ListView.separated(
                   shrinkWrap: true,
                   reverse: false,
-                  scrollDirection: Axis.vertical,
-                  itemCount: 10,
+                  itemCount: 30,
                   separatorBuilder: (_, __){
                     return Divider( color: Colors.indigo[600], thickness: 1, indent: 20, endIndent: 20, height: 0.1,);
                   },
                   itemBuilder: (_, index){
                     return ListTile(
-                      title: Text("Tarefa $index", style: TextStyle(
-                          color: Colors.white, fontStyle: FontStyle.italic,
-                          fontSize: 14,
-                          textBaseline: TextBaseline.alphabetic,
-                          fontWeight: FontWeight.w900,
-                          height: 0.5
-                      ), overflow: TextOverflow.ellipsis,),
-                      onTap: (){
+                            title: Text("Tarefa ${index+1}", style: TextStyle(
+                                color: Colors.white, fontStyle: FontStyle.italic,
+                                fontSize: 14,
+                                textBaseline: TextBaseline.alphabetic,
+                                fontWeight: FontWeight.w900,
+                                height: 0.5
+                            ), overflow: TextOverflow.ellipsis,),
+                            onTap: (){
 
-                      },
+                            },
+                            subtitle: Text("Clique na tarefa para mais informações", style: TextStyle(
+                                color: Colors.white70, fontStyle: FontStyle.italic,
+                                fontSize: 10,
+                                textBaseline: TextBaseline.alphabetic,
+                                fontWeight: FontWeight.w900,
+                                height: 0.5
+                            ),overflow: TextOverflow.ellipsis),
+
                     );
                   },
-                )
+                ),)
               ],
             ),
           )

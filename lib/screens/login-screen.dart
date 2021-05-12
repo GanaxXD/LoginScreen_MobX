@@ -23,12 +23,12 @@ class _LoginScreenState extends State<LoginScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     //fazendo com que o sistema mude de página conforme reação do loggedIn
-    autorun((_){
-      if(loginscreen.loggedIn){
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_)=>  TaskScreen()));
-      }
-    });
+//    autorun((_){
+//      if(loginscreen.loggedIn){
+//        Navigator.of(context).pushReplacement(
+//          MaterialPageRoute(builder: (_)=>TaskScreen()));
+//      }
+//    });
 
     /* Forma alternativa:
     ** Outra forma é usando a reaction. Na reaction, eu passo primeiro qual função
@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
     * Entretanto, a reação fica rodando o tempo todo, então, para pará-la depois que houver a ateração
     * no função que eu estou observando, eu preciso dar um dispose. Por isso a reaction é o resultado do dipose
      */
-    /*
+
     disposer = reaction(
       //função que repassa o que eu quero observação para ativar a reação
         (_)=> loginscreen.loggedIn,
@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
             }
         }
     );
-    */
+
   }
 
   @override
@@ -70,35 +70,32 @@ class _LoginScreenState extends State<LoginScreen> {
                   Padding(
                     padding: const EdgeInsets.all(12),
                     child: MyTextField(
-                        "Login",
-                        Icon(Icons.login, color: Colors.white,),
-                        null,
-                        TextInputType.text,
-                        loginscreen.setEmail,
-                        !loginscreen.loading,
-                        false
+                        hint: "Login",
+                        prefix: Icon(Icons.login, color: Colors.white,),
+                        suffix: null,
+                        textInputType: TextInputType.text,
+                        onChanged: loginscreen.setEmail,
+                        enabled: !loginscreen.loading,
+                        obscure: false
                     ),
                   ),
 
                   Observer(
                       builder: (_){
                         return MyTextField(
-                          "Senha",
-                          Icon(Icons.lock, color: Colors.white,),
-                          Observer(
-                            builder: (_){
-                              return IconButton(icon: Icon(!loginscreen.tooglePasswordIsValid ?
-                                               Icons.visibility : Icons.visibility_off,
-                                         color: Colors.white,),
-                                  onPressed: loginscreen.settooglePasswordChange,
-                                  splashColor: Colors.purpleAccent,
-                              );
-                            }
+                          hint: "Senha",
+                          prefix: Icon(Icons.lock, color: Colors.white,),
+                          suffix: IconButton(
+                            icon: Icon(!loginscreen.tooglePasswordIsValid ?
+                            Icons.visibility : Icons.visibility_off,
+                            color: Colors.white,),
+                            onPressed: loginscreen.settooglePasswordChange,
+                            splashColor: Colors.white,
                           ),
-                          TextInputType.text,
-                          loginscreen.setPassword,
-                          !loginscreen.loading,
-                          loginscreen.tooglePasswordIsValid
+                          textInputType: TextInputType.text,
+                          onChanged: loginscreen.setPassword,
+                          enabled: !loginscreen.loading,
+                          obscure: loginscreen.tooglePasswordIsValid
                           );
                      }
                   ),

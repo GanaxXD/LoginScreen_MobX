@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       color: Colors.blueAccent.shade400,
       title: 'Meu MobX App',
       debugShowCheckedModeBanner: false,
-      home: TaskScreen(),
+      home: LoginScreen(),
     );
   }
 }

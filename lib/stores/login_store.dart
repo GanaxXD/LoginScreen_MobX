@@ -61,7 +61,7 @@ abstract class _LoginStore with Store{
 
   @computed
   Function get loginPressed =>
-      (isPasswordValid && isEmailValid && !loading) ? login : null;
+      (isPasswordValid && isEmailValid && !loading) ? this.login : null;
 
   @action
   Future<void> login() async {

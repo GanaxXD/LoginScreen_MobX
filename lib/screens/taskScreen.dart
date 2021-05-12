@@ -39,13 +39,16 @@ class _TaskScreenState extends State<TaskScreen> {
                 Container(
                   padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                  child: MyTextField("Digite uma tarefa", null,
-                      Icon(Icons.save, color: Colors.white,),
-                      TextInputType.text,
-                      (value){
+                  child: MyTextField(
+                      hint: "Digite uma tarefa",
+                      prefix: null,
+                      suffix: Icon(Icons.save, color: Colors.white,),
+                      textInputType: TextInputType.text,
+                      onChanged: (value){
 
                       },
-                      true, false),
+                      enabled: true,
+                      obscure: false),
                 ),
                 Expanded(child: ListView.separated(
                   shrinkWrap: true,

@@ -35,15 +35,15 @@ A aplicação possui as seguintes telas:
 
 ###### Telas de Login: password visível / não-visível
 <p align="left">
-  <img src="readme/1.png" width="250" title="Tela de Login">
-  <img src="readme/2.png" width="250" alt="Password não-visível">
-  <img src="readme/3.png" width="250" alt="Password visível">
+  <img src="readme_photos/1.png" width="250" title="Tela de Login">
+  <img src="readme_photos/2.png" width="250" alt="Password não-visível">
+  <img src="readme_photos/3.png" width="250" alt="Password visível">
 </p> 
 
 
 ###### Tela de criação de tarefas:
 <p align="left">
-  <img src="readme/4.png" width="250" title="Tela de Iserção de Tarefas">
-  <img src="readme/5.png" width="250" alt="Botão de inserir tarefas visível">
-  <img src="readme/6.png" width="250" alt="Tarefas concluída/ não-concluída">
+  <img src="readme_photos/4.png" width="250" title="Tela de Iserção de Tarefas">
+  <img src="readme_photos/5.png" width="250" alt="Botão de inserir tarefas visível">
+  <img src="readme_photos/6.png" width="250" alt="Tarefas concluída/ não-concluída">
 </p> 

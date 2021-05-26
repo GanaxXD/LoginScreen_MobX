@@ -1,11 +1,11 @@
 # Lista de Tarefas
 
 Este projeto visa apresentar uma aplicação simples de criação de tarefas. O projeto não apresenta nenhuma integração com bancos 
-de dados ou integração com sistemas IaaS.
+de dados ou integração com sistemas *IaaS*.
 
 ## Objetivo da aplicação:
-O objetivo é meramente utilizar o *MobX* para por em prática a forma de gerencia de estados proposta pela biblioteca, motivo
- pelo qual não foi integrado nenhum banco de dados.
+O objetivo é meramente utilizar o *MobX* para por em prática a forma de gerência de estados proposta pela biblioteca, motivo 
+pelo qual não foi integrado nenhum banco de dados.
   
   
 De forma simples, a aplicação permite ao usuário **criar** tarefas e **marcar** na aplicação aquelas que já foram concluídas.

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:login_mobx/screens/taskScreen.dart';
+import 'package:login_mobx/screens/task-screen.dart';
 import 'package:login_mobx/stores/login_store.dart';
 import 'package:login_mobx/widgets/textfield.dart';
 import 'package:mobx/mobx.dart';
@@ -19,16 +19,23 @@ class _LoginScreenState extends State<LoginScreen> {
   ReactionDisposer disposer;
 
 
+    //função para parar a reação infinita
+    @override
+    void dispose() {
+        disposer();
+        super.dispose();
+    }
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     //fazendo com que o sistema mude de página conforme reação do loggedIn
-//    autorun((_){
-//      if(loginscreen.loggedIn){
-//        Navigator.of(context).pushReplacement(
-//          MaterialPageRoute(builder: (_)=>TaskScreen()));
-//      }
-//    });
+    autorun((_){
+      if(loginscreen.loggedIn){
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (_)=>TaskScreen()));
+      }
+    });
 
     /* Forma alternativa:
     ** Outra forma é usando a reaction. Na reaction, eu passo primeiro qual função
@@ -36,8 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
     * Entretanto, a reação fica rodando o tempo todo, então, para pará-la depois que houver a ateração
     * no função que eu estou observando, eu preciso dar um dispose. Por isso a reaction é o resultado do dipose
      */
-
-    disposer = reaction(
+    /*disposer = reaction(
       //função que repassa o que eu quero observação para ativar a reação
         (_)=> loginscreen.loggedIn,
         //reação feita após a mudança na função passada acima
@@ -47,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   MaterialPageRoute(builder: (_)=>  TaskScreen()));
             }
         }
-    );
+    );*/
 
   }
 
@@ -116,7 +122,11 @@ class _LoginScreenState extends State<LoginScreen> {
                              icon: Icon(Icons.directions_walk_outlined,
                                color: loginscreen.isFormValid ? Colors.purple : Colors.grey.withAlpha(999),
                              ),
-                             onPressed: loginscreen.loginPressed,
+                             //onPressed: loginscreen.loginPressed,
+                             onPressed: (){
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(builder: (_)=>  TaskScreen()));
+                             },
                          ),
                        );
                      },
@@ -128,13 +138,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
-//função para parar a reação infinita
-  @override
-  void dispose() {
-    disposer();
-    super.dispose();
-  }
-
-
 }

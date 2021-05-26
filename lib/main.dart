@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_mobx/screens/login-screen.dart';
-import 'package:login_mobx/screens/taskScreen.dart';
+import 'package:login_mobx/screens/task-screen.dart';
 
 void main() => runApp(MyApp());
 

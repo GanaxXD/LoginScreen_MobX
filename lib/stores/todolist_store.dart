@@ -35,6 +35,7 @@ abstract class _ToDoListStore with Store{
     //Ação para preencher a lista observável
     @action
     void newElement(){
-        listToDo.add(ToDoStore(newToDo));
+        //Inserindo o item novo na posição zero da lista (inserindo no topo da lista)
+        listToDo.insert(0, ToDoStore(newToDo));
     }
 }

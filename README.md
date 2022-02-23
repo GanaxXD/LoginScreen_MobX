@@ -47,3 +47,13 @@ A aplicação possui as seguintes telas:
   <img src="readme_photos/5.png" width="250" alt="Botão de inserir tarefas visível">
   <img src="readme_photos/6.png" width="250" alt="Tarefas concluída/ não-concluída">
 </p> 
+
+
+## Testando a Aplicação
+ 
+  
+1. Clone o repositório no seu computador;
+2. Abra o projeto e rode em uma IDE;
+3. Faça o teste com um email qualquer, validado por 
+ uma expressão regular, e uma senha, que contenha pelo menos 
+um numero, um carácter especial e pelo menos 8 carácteres.
